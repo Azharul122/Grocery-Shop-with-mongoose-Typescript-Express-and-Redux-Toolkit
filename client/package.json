@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "proxy": "https://api-fresh-harvest.code-commando.com",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -17,10 +18,13 @@
     "jwt-decode": "^4.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-hook-form": "^7.53.2",
     "react-hot-toast": "^2.4.1",
+    "react-icons": "^5.4.0",
     "react-redux": "^9.1.2",
     "react-router-dom": "^7.0.2",
-    "react-super-responsive-table": "^6.0.0"
+    "react-super-responsive-table": "^6.0.0",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",

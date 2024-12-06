@@ -4,12 +4,15 @@ import config from "../../config";
 
 const userSchema = new Schema(
   {
-    fullname: String,
+    fullName: String,
+    profileImage:String,
+    userName:String,
     email: { type: String, required: true, unique: true },
     password: {
       type: String,
       required: true,
     },
+    role:String,
   },
   { timestamps: true }
 );

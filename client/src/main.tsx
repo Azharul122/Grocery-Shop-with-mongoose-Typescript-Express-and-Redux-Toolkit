@@ -2,7 +2,11 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Home from './pages/Home/Home.tsx'
+import { Provider } from 'react-redux'
+import { store } from './redux/store.ts'
+import ProductDetails from './pages/Shop/product-details.tsx'
 
 const router = createBrowserRouter(
   [
@@ -15,63 +19,13 @@ const router = createBrowserRouter(
           element: <Home />
         },
         {
-          path: "shop",
-          element: <Shop />
-        },
-        {
-          path: "cart",
-          element: <Cart />
-        },
-        {
-          path: "/shop/orders",
-          element: <UserProtectedRoute><Orders /></UserProtectedRoute>
-        },
-        {
-          path: "/products/:id",
-          element: <ProductDetails />
-        },
-        {
-          path: "/search",
-          element: <Search />
-        },
-        {
-          path: "/news/:id",
-          element: <NewsDetails />
-        },
-      ]
-    },
-    {
-      path: "/dashboard/admin",
-      element: <AdminLayout />,
-      children: [
-        {
-          index: true,
-          element: <AdminHome />
+          path:"product-details/:productId",
+          element:<ProductDetails/>
         }
+  
       ]
     },
-    {
-      path: "/dashboard/seller",
-      element: <SellerLayout />,
-      children: [
-        {
-          index: true,
-          element: <SellerHome />
-        }
-      ]
-    },
-    {
-      path: '*',
-      element: <NotFound />
-    },
-    {
-      path: '/login',
-      element: <Login />
-    },
-    {
-      path: '/signup',
-      element: <SignUp />
-    },
+    
 
 
   ]
@@ -79,6 +33,8 @@ const router = createBrowserRouter(
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <Provider store={store}>
+      <RouterProvider router={router}></RouterProvider>
+    </Provider>
   </StrictMode>,
 )

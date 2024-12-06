@@ -27,9 +27,18 @@ const register = async (data: userInterfce) => {
       expiresIn: config.jwt_rt_ex_in,
     }
   );
-  
+
+  let role;
+  //   {
+  //     "email": "admin@gmail.com",
+  //     "password": "12345678"
+  // }
+  if (data.email == "admin@gmail.com" && data.password == "12345678") {
+    role = "Admin";
+  }
+
   const validateData = userValidations.registerValidation.parse(data);
-  const result = await User.create(validateData);
+  const result = await User.create({ ...validateData, role });
   return {
     result,
     refreshToken,
@@ -56,7 +65,7 @@ const login = async (payload: loginInterface) => {
   }
 
   const jwtPayload = {
-    name: isUserExistInDB.fullname,
+    name: isUserExistInDB.fullName,
 
     email: isUserExistInDB.email,
   };

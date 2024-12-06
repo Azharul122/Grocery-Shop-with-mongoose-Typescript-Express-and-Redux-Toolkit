@@ -4,6 +4,7 @@ import { authRoutes } from "./modules/auth/route.auth";
 import { productRouts } from "./modules/products/routes.products";
 import globalErrorHandler from "./middlewares/globalHandler";
 import notFound from "./middlewares/NotFound";
+import { categoryRoutes } from "./modules/category/cat.route";
 
 const app: Application = express();
 
@@ -14,6 +15,7 @@ app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 // APIs
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/product", productRouts);
+app.use("/api/v1/", categoryRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello World!");

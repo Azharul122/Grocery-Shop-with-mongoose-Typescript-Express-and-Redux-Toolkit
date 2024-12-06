@@ -1,5 +1,8 @@
  export interface userInterfce {
   fullname?: string;
+  userName?:string,
+  role?:string,
+  profileImage?:string,
   email: string;
   password: string;
   createdAt?: Date;
